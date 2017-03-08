@@ -35,7 +35,7 @@
   <script>
     FRONTEND_URL = "<%= j(AppConfig[:frontend_proxy_url]) %>";
     PUBLIC_URL = "<%= j(AppConfig[:public_proxy_url]) %>";
-    APP_PATH = "<%= j(AppConfig[:public_proxy_prefix]) %>";
+    APP_PATH = "<%= j(AppConfig[:frontend_proxy_prefix]) %>";
     FACET_SHOW_FEWER = "<%= I18n.t("search_results.filter.show_fewer") %>";
     FACET_SHOW_MORE = "<%= I18n.t("search_results.filter.show_more") %>";
   </script>
@@ -43,33 +43,34 @@
 </head>
 
 <body data-spy="scroll" data-target="#archivesSpaceSidebar" data-offset="20">
-
-  <header>
-    <div class="branding-container container">
-      <div class="row-fluid">
-        <%= render "site/branding" %>
+  <div id="main" class="container">
+    <header>
+      <div class="branding-container container">
+        <div class="row-fluid">
+          <%= render "site/branding" %>
+        </div>
       </div>
-    </div>
+      <div class="container">
+        <%= render "site/header" %>
+      </div>
+    </header>
+
     <div class="container">
-      <%= render "site/header" %>
+      <% if !current_page?(root_url) %>
+        <div class="advanced-search-container <% if params["advanced"].blank? or params["advanced"]  === 'false' %>hide<% end %>">
+          <%= render_aspace_partial :partial => "site/advanced_search" %>
+        </div>
+      <% end %>
+      <%= render_aspace_partial :partial => "site/breadcrumb" %>
+      <%= yield %>
     </div>
-  </header>
 
-  <div class="container">
-    <% if !current_page?(root_url) %>
-      <div class="advanced-search-container <% if params["advanced"].blank? or params["advanced"]  === 'false' %>hide<% end %>">
-        <%= render_aspace_partial :partial => "site/advanced_search" %>
-      </div>
-    <% end %>
-    <%= render_aspace_partial :partial => "site/breadcrumb" %>
-    <%= yield %>
   </div>
+    <footer>
+      <%= render "site/footer" %>
+    </footer>
 
-  <footer>
-    <%= render "site/footer" %>
-  </footer>
-
-  <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "application" %>
 
 </body>
 </html>

@@ -1,15 +1,178 @@
 @baseFontSize: 13px;
 
 body {
-  background: #FFFFFF asset-url('themes/default/bg_body.png') repeat top left;
+  //background: #FFFFFF asset-url('themes/default/bg_body.png') repeat top left;
+  //background: #cbe3e3;
+  min-width: 350px;
 }
 
+#main {
+  min-height: 400px;
+  padding: 0 0 4em;
+  background-image: url(http://library.uncw.edu/sites/all/themes/uncw/images/footerback.png);
+  background-position: center bottom;
+  background-repeat: repeat-x;
+}
+
+/*UNCW HEADER ----------------------------------------------------------------*/
+#uncw {
+  font-size: .9em;
+  margin: 6px 5px 5px 5px;
+  position: relative;
+  z-index: 99;
+}
+#uncw #logo {
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+#uncw a {
+  color: #1A1A1A;
+}
+#uncwlinks {
+  position: absolute;
+  top: 5px;
+  right: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0 5px 0 0;
+  background: url(http://uncw.edu/assets/images/triangledown.gif) no-repeat right center;
+  z-index: 200;
+}
+#uncwlinks li {
+  display: inline;
+  padding: 0 7px 0 5px;
+  border-left: solid 1px;
+  margin: 0;
+}
+#uncwlinks li a {
+  font-family: tahoma, arial, sans-serif;
+  font-size: 13px;
+}
+#uncwlinks li:first-child {
+  border: none;
+}
+#uncwlinks li ul {
+  margin: 0 0 0 -50px;
+  padding: 0;
+}
+#uncwlinks li li {
+  background:	#fff;
+  padding: 2px 5px;
+  border-left: none;
+  border-top: dotted 1px #ccc;
+}
+#uncw form {
+  position: absolute;
+  top: 10px;
+  right: 0;
+  z-index:1;
+}
+#uncw input {
+  background-image: none !important;
+}
+#uncw label {
+  position: relative;
+  left: -999em;
+}
+/* skip links for accessibility */
+
+.skip a,
+.skip a:hover,
+.skip a:visited {
+	position:absolute;
+	left:0px;
+	top:-500px;
+	width:1px;
+	height:1px;
+	overflow:hidden;
+	text-align: right;
+	}
+.skip a:active,
+.skip a:focus {
+	top: -15px;
+	right: 0px;
+	width:auto;
+	height:auto;
+	}
+
+/* (superfish dropdown styles) */
+
+.sf-menu ul {
+	position:		absolute;
+	top:			-999em;
+	width:			10em; /* left offset of submenus need to match (see below) */
+	}
+.sf-menu ul li {
+	width:			100%;
+	}
+.sf-menu li:hover {
+	visibility:		inherit; /* fixes IE7 'sticky bug' */
+	}
+.sf-menu li {
+	float:			left;
+	position:		relative;
+	}
+.sf-menu a {
+	display:		block;
+	position:		relative;
+	}
+.sf-menu li:hover ul,
+.sf-menu li.sfHover ul {
+	left:			0;
+	top:			1.5em; /* match top ul list item height */
+	z-index:		99;
+	}
+ul.sf-menu li:hover li ul,
+ul.sf-menu li.sfHover li ul {
+	top:			-999em;
+	}
+ul.sf-menu li li:hover ul,
+ul.sf-menu li li.sfHover ul {
+	left:			8em; /* match ul width */
+	top:			0;
+	}
+ul.sf-menu li li:hover li ul,
+ul.sf-menu li li.sfHover li ul {
+	top:			-999em;
+	}
+ul.sf-menu li li li:hover ul,
+ul.sf-menu li li li.sfHover ul {
+	left:			8em; /* match ul width */
+	top:			0;
+	}
+
 header h1 {
-  padding: 20px 0;
+  padding: 0;
+  font-size: 0;
+  background: url(http://library.uncw.edu/guides/sites/all/themes/guides/images/headerbackground.jpg);
+  background-repeat: repeat-x;
+}
+p.archivesHeaderBlock {
+  position: absolute;
+  top: 100px;
+  right: 0px;
+  padding: 20px;
 }
 
 .navbar .navbar-inner {
   .border-radius(4px 4px 0 0);
+}
+.navbar-inner {
+  background-image: url(http://library.uncw.edu/sites/all/themes/uncw/images/tealback.jpg);
+  background-size: contain;
+}
+.navbar .container.top {
+  border-bottom: none !important;
+}
+.navbar .nav>li>a {
+  float: none;
+  padding: 10px 15px 10px;
+  color: #FFF;
+  text-decoration: none;
+  text-shadow: none;
+}
+.navbar .nav>li>a:hover {
+  background: #eee;
 }
 
 .content-pane {
@@ -56,6 +219,10 @@ header h1 {
   display: none;
 }
 
+.label-info, .badge-info {
+  background-color: #006666;
+}
+
 .footer {
   padding: 20px;
   text-align: right;
@@ -72,5 +239,40 @@ header h1 {
   }
   .control-group {
     margin-bottom: 5px;
+  }
+}
+
+@media (max-width: 979px) {
+  #uncw #logo {
+    margin-top: 65px;
+    margin-bottom: 0;
+  }
+  .navbar .btn-navbar {
+    margin-bottom: 5px;
+  }
+  p.archivesHeaderBlock {
+    position: absolute;
+    top: 130px;
+    right: -33px;
+    padding: 12px 0px;
+  }
+}
+
+@media (max-width: 767px) {
+  header h1 {
+    background: none;
+  }
+  p.archivesHeaderBlock {
+    position: inherit;
+    text-align: center;
+    padding: 10px;
+    background-image: url(http://library.uncw.edu//guides/sites/all/themes/guides/images/headerbackground.jpg);
+    background-repeat: repeat-x;
+  }
+}
+
+@media (max-width: 550px) {
+  p.archivesHeaderBlock img {
+    max-width: 45%;
   }
 }

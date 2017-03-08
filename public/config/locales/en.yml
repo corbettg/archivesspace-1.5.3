@@ -2,8 +2,8 @@ en:
   brand:
     title: ArchivesSpace Public Interface
     home: Home
-    welcome_message: Welcome to ArchivesSpace.
-    welcome_search_label: "Find what you're looking for:"
+    welcome_message: University Archives and Special Collections Database
+    welcome_search_label: "Search across all archival collections for detailed information, collections, and finding aids:"
 
   actions:
     search: Search
